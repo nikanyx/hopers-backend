@@ -1,0 +1,10 @@
+org/codeforall/orange/model/Users.class
+org/codeforall/orange/controllers/MainController.class
+org/codeforall/orange/model/Giftees.class
+org/codeforall/orange/model/Institutions.class
+org/codeforall/orange/Main.class
+org/codeforall/orange/command/GifteeDTO.class
+org/codeforall/orange/controllers/GifteeController.class
+org/codeforall/orange/services/GifteeService.class
+org/codeforall/orange/controllers/RestGifteeController.class
+org/codeforall/orange/persistence/GifteeDao.class

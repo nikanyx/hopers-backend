@@ -1,0 +1,57 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="SqlNoDataSourceInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="VulnerableLibrariesLocal" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="isIgnoringEnabled" value="true" />
+      <option name="ignoredModules">
+        <list>
+          <option value="untitled-orange-app" />
+          <option value="untitled-orange-app" />
+          <option value="untitled-orange-app" />
+          <option value="untitled-orange-app" />
+          <option value="untitled-orange-app" />
+          <option value="untitled-orange-app" />
+          <option value="untitled-orange-app" />
+          <option value="untitled-orange-app" />
+          <option value="untitled-orange-app" />
+          <option value="untitled-orange-app" />
+          <option value="untitled-orange-app" />
+          <option value="untitled-orange-app" />
+        </list>
+      </option>
+      <option name="ignoredPackages">
+        <list>
+          <option value="mysql:mysql-connector-java:8.0.16" />
+          <option value="org.springframework:spring-context:4.3.11.RELEASE" />
+          <option value="org.springframework:spring-beans:4.3.11.RELEASE" />
+          <option value="org.springframework:spring-jdbc:4.3.11.RELEASE" />
+          <option value="org.springframework:spring-core:4.3.11.RELEASE" />
+          <option value="org.springframework:spring-webmvc:4.3.11.RELEASE" />
+          <option value="org.springframework:spring-webmvc:6.1.10" />
+          <option value="org.springframework:spring-jdbc:6.1.10" />
+          <option value="org.springframework:spring-context:6.1.10" />
+          <option value="org.springframework:spring-beans:6.1.10" />
+          <option value="org.springframework:spring-core:6.1.10" />
+          <option value="com.google.protobuf:protobuf-java:3.6.1" />
+        </list>
+      </option>
+      <option name="ignoredReasons">
+        <list>
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

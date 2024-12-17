@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- Base package to search for spring beans -->
+    <context:component-scan base-package="org.codeforall.orange"/>
+
+    <!-- Use @Controller, @Service annotations -->
+    <mvc:annotation-driven/>
+
+    <!-- Use spring servlet for all requests, including static resources -->
+    <mvc:default-servlet-handler/>
+
+    <!-- bean responsible for scanning Spring-managed beans for JPA annotations and processing them -->
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="emFactory" />
+    </bean>
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <!--
+            By default, closing the last connection to a database closes the database.
+            For an in-memory database, this means the content is lost.
+            To keep the database open, DB_CLOSE_DELAY=-1 is required
+        -->
+        <!-- h2
+        <property name="driverClassName" value="org.h2.Driver"/>
+        <property name="url" value="jdbc:h2:file:./data/untitled_orange_app;DB_CLOSE_DELAY=-1"/>-->
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/untitled_orange_app"/>
+
+        <property name="username" value="root"/>
+        <property name="password" value=""/>
+    </bean>
+
+    <bean id="emFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="org.codeforall.orange.model"/>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+        </property>
+        <property name="jpaProperties">
+            <map>
+
+                <!-- Uncomment for debug, logs hibernate's sql queries -->
+                <entry key="hibernate.show_sql" value="true" />
+                <entry key="hibernate.format_sql" value="true"/>
+
+                <!-- h2
+                <entry key="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/> -->
+                <entry key="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+
+                <!-- create: Creates database schema and populate with test data -->
+                <!-- update: For production, avoids dropping the schema each time. -->
+                <entry key="hibernate.hbm2ddl.auto" value="create"/>
+
+                <!-- Insert test data if dev.schema.auto property set to create -->
+                <entry key="hibernate.hbm2ddl.import_files" value="db/seeds.sql"/>
+
+            </map>
+        </property>
+    </bean>
+
+</beans>
