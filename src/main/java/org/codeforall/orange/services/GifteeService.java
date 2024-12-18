@@ -1,6 +1,5 @@
 package org.codeforall.orange.services;
 
-import jakarta.transaction.Transactional;
 import org.codeforall.orange.model.Giftee;
 import org.codeforall.orange.persistence.GifteeDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +20,12 @@ public class GifteeService {
         return gifteeDao.findById(id);
     }
 
-    @Transactional
+
     public Giftee save(Giftee giftee) {
-        return gifteeDao.saveOrUpdate(giftee);
+        gifteeDao.getEm().getTransaction().begin();
+        Giftee savedGiftee = gifteeDao.saveOrUpdate(giftee);
+        gifteeDao.getEm().getTransaction().commit();
+        return savedGiftee;
     }
 
     public List<Giftee> list() {

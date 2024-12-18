@@ -19,6 +19,10 @@ public class InstitutionDao {
         this.em = em;
     }
 
+    public EntityManager getEm() {
+        return em;
+    }
+
     public List<Institution> findAll() {
         CriteriaQuery<Institution> criteriaQuery = em.getCriteriaBuilder().createQuery(Institution.class);
         Root<Institution> root = criteriaQuery.from(Institution.class);

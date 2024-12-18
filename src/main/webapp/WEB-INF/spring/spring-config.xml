@@ -5,6 +5,7 @@
        xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+
     <!-- Base package to search for spring beans -->
     <context:component-scan base-package="org.codeforall.orange"/>
 
@@ -17,11 +18,11 @@
     <!-- bean responsible for scanning Spring-managed beans for JPA annotations and processing them -->
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
 
+    <!--
     <tx:annotation-driven transaction-manager="transactionManager"/>
-
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="emFactory" />
-    </bean>
+    </bean>-->
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <!--
@@ -62,7 +63,7 @@
                 <entry key="hibernate.hbm2ddl.auto" value="create"/>
 
                 <!-- Insert test data if dev.schema.auto property set to create -->
-                <entry key="hibernate.hbm2ddl.import_files" value="db/seeds.sql"/>
+                <!--<entry key="hibernate.hbm2ddl.import_files" value="db/seeds.sql"/>-->
 
             </map>
         </property>
@@ -79,7 +80,7 @@
     <!-- configures a data source initializer which orchestrates the database initialization process -->
     <bean id="dataSourceInitializer" class="org.springframework.jdbc.datasource.init.DataSourceInitializer">
         <property name="dataSource" ref="dataSource"/>
-        <property name="databasePopulator" ref="databasePopulator"/>
+        <!--<property name="databasePopulator" ref="databasePopulator"/>-->
         <!-- when done creating the schema and populating the database, change to false -->
         <property name="enabled" value="true"/>
     </bean>
