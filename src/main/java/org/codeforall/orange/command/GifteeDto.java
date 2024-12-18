@@ -23,7 +23,7 @@ public class GifteeDto {
 
     @NotNull(message = "Institution is mandatory")
     @NotBlank(message = "Institution is mandatory")
-    private Institution institution;
+    private Integer institutionId;
 
     //Getters
     public int getId() {
@@ -42,8 +42,8 @@ public class GifteeDto {
         return description;
     }
 
-    public Institution getInstitution() {
-        return institution;
+    public Integer getInstitutionId() {
+        return institutionId;
     }
 
     //Setters
@@ -63,12 +63,9 @@ public class GifteeDto {
         this.description = description;
     }
 
-    public void setInstitution(Institution institution) {
-        this.institution = institution;
+    public void setInstitutionId(Integer institutionId) {
+        this.institutionId = institutionId;
     }
 
-    public String toString(){
-        return name + " (" + age + "): " + description + " :: " + institution;
-    }
 }
 

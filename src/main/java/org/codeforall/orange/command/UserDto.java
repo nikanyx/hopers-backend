@@ -15,7 +15,8 @@ public class UserDto {
 
     @NotNull(message = "Phone is mandatory")
     @NotBlank(message = "Phone is mandatory")
-    private Integer phone;
+    @Size(min = 9, max = 14)
+    private String phone;
 
     @NotNull(message = "Description is mandatory")
     @NotBlank(message = "Description is mandatory")
@@ -35,7 +36,7 @@ public class UserDto {
         return name;
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
@@ -56,7 +57,7 @@ public class UserDto {
         this.name = name;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

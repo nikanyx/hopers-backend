@@ -24,7 +24,7 @@ public class Giftee {
     @JoinColumn(name = "users_id")  // Foreign key column in the Giftees table
     private User users; // Foreign key to Users
 
-    private boolean status;//False = In Progress, True = Completed
+    private Boolean status;//False = In Progress, True = Completed
 
     //Getters
     public Integer getId() {
@@ -51,7 +51,7 @@ public class Giftee {
         return users;
     }
 
-    public boolean isStatus() {
+    public Boolean isStatus() {
         return status;
     }
 
@@ -80,7 +80,7 @@ public class Giftee {
         this.users = users;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 }

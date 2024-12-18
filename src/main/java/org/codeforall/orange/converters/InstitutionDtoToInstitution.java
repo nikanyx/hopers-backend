@@ -31,7 +31,7 @@ public class InstitutionDtoToInstitution implements Converter<InstitutionDto, In
             institution.setName(institutionDto.getName());
             institution.setMail(institutionDto.getMail());
             institution.setSchedule(institutionDto.getSchedule());
-            institution.setAddress(institutionDto.getAdrress());
+            institution.setAddress(institutionDto.getAddress());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

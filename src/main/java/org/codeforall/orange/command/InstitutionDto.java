@@ -26,7 +26,7 @@ public class InstitutionDto {
     @NotNull(message = "Address is mandatory")
     @NotBlank(message = "Address is mandatory")
     @Size(min = 3, max = 64)
-    private String adrress;
+    private String address;
 
     //Getters
     public int getId() {
@@ -45,8 +45,8 @@ public class InstitutionDto {
         return schedule;
     }
 
-    public String getAdrress() {
-        return adrress;
+    public String getAddress() {
+        return address;
     }
 
     //Setters
@@ -66,7 +66,7 @@ public class InstitutionDto {
         this.schedule = schedule;
     }
 
-    public void setAdrress(String adrress) {
-        this.adrress = adrress;
+    public void setAddress(String adrress) {
+        this.address = adrress;
     }
 }

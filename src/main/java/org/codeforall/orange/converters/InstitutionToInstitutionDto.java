@@ -18,7 +18,7 @@ public class InstitutionToInstitutionDto extends AbstractConverter<Institution, 
         institutionDto.setName(institution.getName());
         institutionDto.setMail(institution.getMail());
         institutionDto.setSchedule(institution.getSchedule());
-        institutionDto.setAdrress(institution.getAddress());
+        institutionDto.setAddress(institution.getAddress());
 
         return institutionDto;
     }

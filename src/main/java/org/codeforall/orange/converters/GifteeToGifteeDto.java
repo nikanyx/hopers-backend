@@ -18,7 +18,7 @@ public class GifteeToGifteeDto extends AbstractConverter<Giftee, GifteeDto>{
         gifteeDto.setName(giftee.getName());
         gifteeDto.setAge(giftee.getAge());
         gifteeDto.setDescription(giftee.getDescription());
-        gifteeDto.setInstitution(giftee.getInstitution());
+        gifteeDto.setInstitutionId(giftee.getInstitution().getId());
 
         return gifteeDto;
     }
