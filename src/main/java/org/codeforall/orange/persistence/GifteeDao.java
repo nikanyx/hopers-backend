@@ -19,6 +19,10 @@ public class GifteeDao {
         this.em = em;
     }
 
+    public EntityManager getEm() {
+        return em;
+    }
+
     public List<Giftee> findAll() {
         CriteriaQuery<Giftee> criteriaQuery = em.getCriteriaBuilder().createQuery(Giftee.class);
         Root<Giftee> root = criteriaQuery.from(Giftee.class);
@@ -32,6 +36,7 @@ public class GifteeDao {
     public Giftee saveOrUpdate(Giftee modelObject) {
         return em.merge(modelObject);
     }
+
 
     /*
     public void delete(Integer id) {

@@ -5,6 +5,7 @@ import org.codeforall.orange.model.Giftee;
 import org.codeforall.orange.services.GifteeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class RestGifteeController {
         this.gifteeService = gifteeService;
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = {"/", ""})
+    @RequestMapping(method = RequestMethod.GET, path = {"/", ""}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<GifteeDto>> listGiftees() {
 
         List<GifteeDto> giftees = gifteeService.list().stream()
@@ -31,13 +32,13 @@ public class RestGifteeController {
         return new ResponseEntity<>(giftees, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = {"/{id}"})
+    @RequestMapping(method = RequestMethod.GET, path = {"/{id}"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Giftee> getGiftee(@PathVariable Integer id) {
         return new ResponseEntity<>(gifteeService.get(id), HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = {"/{id}"})
-    public ResponseEntity<Giftee> addGiftee(@RequestBody Giftee giftee) {
+    @RequestMapping(method = RequestMethod.POST, path = {"/"}, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity addGiftee(@RequestBody Giftee giftee) {
 
         gifteeService.save(giftee);
         return new ResponseEntity<>(HttpStatus.CREATED);

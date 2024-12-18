@@ -66,5 +66,9 @@ public class GifteeDto {
     public void setInstitution(Institution institution) {
         this.institution = institution;
     }
+
+    public String toString(){
+        return name + " (" + age + "): " + description + " :: " + institution;
+    }
 }
 

@@ -19,6 +19,10 @@ public class UserDao {
         this.em = em;
     }
 
+    public EntityManager getEm() {
+        return em;
+    }
+
     public List<User> findAll() {
         CriteriaQuery<User> criteriaQuery = em.getCriteriaBuilder().createQuery(User.class);
         Root<User> root = criteriaQuery.from(User.class);
