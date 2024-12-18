@@ -2,17 +2,21 @@ package org.codeforall.orange.converters;
 
 import org.codeforall.orange.model.Giftee;
 import org.codeforall.orange.services.InstitutionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.codeforall.orange.command.InstitutionDto;
 import org.codeforall.orange.model.Institution;
+import org.springframework.stereotype.Component;
 
 /**
  * DONE
  */
+@Component
 public class InstitutionDtoToInstitution implements Converter<InstitutionDto, Institution> {
 
     private InstitutionService institutionService;
 
+    @Autowired
     public void setInstitutionService(InstitutionService institutionService) {
         this.institutionService = institutionService;
     }

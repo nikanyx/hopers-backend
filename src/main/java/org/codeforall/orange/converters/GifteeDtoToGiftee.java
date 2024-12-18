@@ -3,16 +3,20 @@ package org.codeforall.orange.converters;
 import org.codeforall.orange.command.GifteeDto;
 import org.codeforall.orange.model.Giftee;
 import org.codeforall.orange.services.GifteeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
 /**
  * DONE
  */
+@Component
 public class GifteeDtoToGiftee implements Converter<GifteeDto, Giftee> {
 
 
     private GifteeService gifteeService;
 
+    @Autowired
     public void setGifteeService(GifteeService gifteeService) {
         this.gifteeService = gifteeService;
     }

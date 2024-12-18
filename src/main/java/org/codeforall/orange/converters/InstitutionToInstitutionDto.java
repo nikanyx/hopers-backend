@@ -2,10 +2,12 @@ package org.codeforall.orange.converters;
 
 import org.codeforall.orange.command.InstitutionDto;
 import org.codeforall.orange.model.Institution;
+import org.springframework.stereotype.Component;
 
 /**
  * DONE
  */
+@Component
 public class InstitutionToInstitutionDto extends AbstractConverter<Institution, InstitutionDto> {
 
     public InstitutionDto convert(Institution institution) {

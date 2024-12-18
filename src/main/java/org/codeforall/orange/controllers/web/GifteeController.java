@@ -24,7 +24,7 @@ public class GifteeController {
     @RequestMapping(method = RequestMethod.GET, path = {"/list", "/", ""})
     public String listGiftees() {
         //model.addAttribute("customers", customerToCustomerDto.convert(customerService.list()));
-        return "index";
+        return "/templates/index.html";
     }
 
     /**
