@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "giftees")
-public class Giftees {
+public class Giftee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,11 +18,11 @@ public class Giftees {
 
     @ManyToOne
     @JoinColumn(name = "institutions_id")  // Foreign key column in the Giftees table
-    private Institutions institution; // Foreign key to Institution
+    private Institution institution; // Foreign key to Institution
 
     @ManyToOne
     @JoinColumn(name = "users_id")  // Foreign key column in the Giftees table
-    private Users users; // Foreign key to Users
+    private User users; // Foreign key to Users
 
     private boolean status;//False = In Progress, True = Completed
 
@@ -43,11 +43,11 @@ public class Giftees {
         return description;
     }
 
-    public Institutions getInstitution() {
+    public Institution getInstitution() {
         return institution;
     }
 
-    public Users getUsers() {
+    public User getUsers() {
         return users;
     }
 
@@ -72,11 +72,11 @@ public class Giftees {
         this.description = description;
     }
 
-    public void setInstitution(Institutions institution) {
+    public void setInstitution(Institution institution) {
         this.institution = institution;
     }
 
-    public void setUsers(Users users) {
+    public void setUsers(User users) {
         this.users = users;
     }
 

@@ -1,7 +1,7 @@
 package org.codeforall.orange.controllers;
 
-import org.codeforall.orange.command.GifteeDTO;
-import org.codeforall.orange.model.Giftees;
+import org.codeforall.orange.command.GifteeDto;
+import org.codeforall.orange.model.Giftee;
 import org.codeforall.orange.services.GifteeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,9 +22,9 @@ public class RestGifteeController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = {"/", ""})
-    public ResponseEntity<List<GifteeDTO>> listGiftees() {
+    public ResponseEntity<List<GifteeDto>> listGiftees() {
 
-        List<GifteeDTO> giftees = gifteeService.list().stream()
+        List<GifteeDto> giftees = gifteeService.list().stream()
                 .map(giftee -> convert(giftee))
                 .collect(Collectors.toList());
 
@@ -32,19 +32,19 @@ public class RestGifteeController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = {"/{id}"})
-    public ResponseEntity<Giftees> getGiftee(@PathVariable Integer id) {
+    public ResponseEntity<Giftee> getGiftee(@PathVariable Integer id) {
         return new ResponseEntity<>(gifteeService.get(id), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST, path = {"/{id}"})
-    public ResponseEntity<Giftees> addGiftee(@RequestBody Giftees giftee) {
+    public ResponseEntity<Giftee> addGiftee(@RequestBody Giftee giftee) {
 
         gifteeService.save(giftee);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    private GifteeDTO convert(Giftees giftee) {
-        GifteeDTO gifteeDto = new GifteeDTO();
+    private GifteeDto convert(Giftee giftee) {
+        GifteeDto gifteeDto = new GifteeDto();
         gifteeDto.setId(giftee.getId());
         gifteeDto.setName(giftee.getName());
         gifteeDto.setAge(giftee.getAge());

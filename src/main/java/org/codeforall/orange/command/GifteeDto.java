@@ -1,9 +1,9 @@
 package org.codeforall.orange.command;
 
 import jakarta.validation.constraints.*;
-import org.codeforall.orange.model.Institutions;
+import org.codeforall.orange.model.Institution;
 
-public class GifteeDTO {
+public class GifteeDto {
 
     private int id;
 
@@ -23,7 +23,7 @@ public class GifteeDTO {
 
     @NotNull(message = "Institution is mandatory")
     @NotBlank(message = "Institution is mandatory")
-    private Institutions institution;
+    private Institution institution;
 
     //Getters
     public int getId() {
@@ -42,7 +42,7 @@ public class GifteeDTO {
         return description;
     }
 
-    public Institutions getInstitution() {
+    public Institution getInstitution() {
         return institution;
     }
 
@@ -63,7 +63,7 @@ public class GifteeDTO {
         this.description = description;
     }
 
-    public void setInstitution(Institutions institution) {
+    public void setInstitution(Institution institution) {
         this.institution = institution;
     }
 }

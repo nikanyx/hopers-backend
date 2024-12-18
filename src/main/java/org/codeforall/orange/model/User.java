@@ -9,7 +9,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "users")
-public class Users {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +29,7 @@ public class Users {
             orphanRemoval = true
             //fetch = FetchType.LAZY
     )  // Inverse side of the relationship
-    private List<Giftees> giftees;
+    private List<Giftee> giftees;
 
     //Getters
     public Integer getId() {
@@ -52,7 +52,7 @@ public class Users {
         return donations;
     }
 
-    public List<Giftees> getGiftees() {
+    public List<Giftee> getGiftees() {
         return giftees;
     }
 
@@ -77,7 +77,7 @@ public class Users {
         this.donations = donations;
     }
 
-    public void setGiftees(List<Giftees> giftees) {
+    public void setGiftees(List<Giftee> giftees) {
         this.giftees = giftees;
     }
 }

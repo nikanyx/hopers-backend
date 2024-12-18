@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "institutions")
-public class Institutions {
+public class Institution {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +30,7 @@ public class Institutions {
             orphanRemoval = true
             //fetch = FetchType.LAZY
     )
-    private List<Giftees> giftees = new ArrayList<>();
+    private List<Giftee> giftees = new ArrayList<>();
 
     //Getters
     public Integer getId() {
@@ -57,7 +57,7 @@ public class Institutions {
         return isAvailable;
     }
 
-    public List<Giftees> getGiftees() {
+    public List<Giftee> getGiftees() {
         return giftees;
     }
 
@@ -86,7 +86,7 @@ public class Institutions {
         isAvailable = available;
     }
 
-    public void setGiftees(List<Giftees> giftees) {
+    public void setGiftees(List<Giftee> giftees) {
         this.giftees = giftees;
     }
 }
