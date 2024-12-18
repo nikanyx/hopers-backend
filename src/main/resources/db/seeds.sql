@@ -31,8 +31,9 @@ CREATE TABLE giftees (
     users_id INT NOT NULL,
     status TINYINT NOT NULL
 );
+
 INSERT INTO institutions (name, mail, schedule, address, isAvailable)
-VALUES ('Camara Municipal de Lisboa', 'lisboa@camaradelisboa.pt', 'from 10am to 8pm', 'Praca do Municipio', 0),
+VALUES ('Camara  de Lisboa', 'lisboa@camaradelisboa.pt', 'from 10am to 8pm', 'Praca do Municipio', 0),
        ('Caritas', 'caritas@doaratodos.pt', 'from 10am to 4pm', 'No Ceu', 1),
        ('Unicef Portugal', 'unicef@uportugal.pt', 'from 9:30am to 6:30 pm', 'No outro ceu', 0);
 

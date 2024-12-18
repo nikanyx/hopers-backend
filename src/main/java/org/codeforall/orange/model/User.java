@@ -14,14 +14,10 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-
     private String name;
-
-    private int phone;
-
+    private Integer phone;
     private String mail;
-    private int donations;
+    private Integer donations;
 
     @OneToMany(
             mappedBy = "users",
@@ -40,7 +36,7 @@ public class User {
         return name;
     }
 
-    public int getPhoneNumber() {
+    public int getPhone() {
         return phone;
     }
 
@@ -48,7 +44,7 @@ public class User {
         return mail;
     }
 
-    public int getNumberOfDonations() {
+    public int getDonations() {
         return donations;
     }
 
@@ -65,7 +61,7 @@ public class User {
         this.name = name;
     }
 
-    public void setPhoneNumber(int phone) {
+    public void setPhone(int phone) {
         this.phone = phone;
     }
 
@@ -73,7 +69,7 @@ public class User {
         this.mail = mail;
     }
 
-    public void setNumberOfDonations(int donations) {
+    public void setDonations(int donations) {
         this.donations = donations;
     }
 
