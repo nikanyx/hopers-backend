@@ -23,8 +23,8 @@ public class UserDto {
     @Size(min = 3, max = 256)
     private String mail;
 
-    @NotNull(message = "Phone is mandatory")
-    @NotBlank(message = "Phone is mandatory")
+    @NotNull(message = "Mandatory")
+    @NotBlank(message = "Mandatory")
     private Integer donations;
 
     //Getters

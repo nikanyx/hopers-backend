@@ -1,6 +1,8 @@
 package org.codeforall.orange.controllers.rest;
 
+import org.codeforall.orange.command.GifteeDto;
 import org.codeforall.orange.command.UserDto;
+import org.codeforall.orange.converters.GifteeToGifteeDto;
 import org.codeforall.orange.converters.UserDtoToUser;
 import org.codeforall.orange.converters.UserToUserDto;
 import org.codeforall.orange.model.User;
@@ -21,6 +23,7 @@ public class RestUserController {
     private UserService userService;
     private UserToUserDto userToUserDto;
     private UserDtoToUser userDtoToUser;
+    private GifteeToGifteeDto gifteeToGifteeDto;
 
     @Autowired
     public void setUserService(UserService userService) {
@@ -37,6 +40,23 @@ public class RestUserController {
         this.userDtoToUser = userDtoToUser;
     }
 
+    @Autowired
+    public void setGifteeToGifteeDto(GifteeToGifteeDto gifteeToGifteeDto) {
+        this.gifteeToGifteeDto = gifteeToGifteeDto;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = {"/{id}"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<UserDto> getUserById(@PathVariable Integer id) {
+        UserDto userDto = userToUserDto.convert(userService.get(id));
+        return new ResponseEntity<>(userDto, HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, path = {"/", ""}, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<UserDto> addUser(@RequestBody UserDto userDto) {
+        User savedUser = userService.save(userDtoToUser.convert(userDto));
+        return new ResponseEntity<>(userToUserDto.convert(savedUser),HttpStatus.CREATED);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = {"/", ""}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<UserDto>> listUsers() {
 
@@ -47,16 +67,14 @@ public class RestUserController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = {"/{id}"}, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserDto> getUser(@PathVariable Integer id) {
-        UserDto userDto = userToUserDto.convert(userService.get(id));
-        return new ResponseEntity<>(userDto, HttpStatus.OK);
-    }
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}/giftees", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<GifteeDto>> listGifteesByUserId(@PathVariable Integer id) {
 
-    @RequestMapping(method = RequestMethod.POST, path = {"/"}, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity addUser(@RequestBody UserDto userDto) {
-        User user = userDtoToUser.convert(userDto);
-        userService.save(user);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        List<GifteeDto> giftees = userService.get(id).getGiftees().stream()
+                .filter(giftee -> giftee.isStatus() != true)
+                .map(giftee -> gifteeToGifteeDto.convert(giftee))
+                .collect(Collectors.toList());
+
+        return new ResponseEntity<>(giftees, HttpStatus.OK);
     }
 }

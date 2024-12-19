@@ -7,5 +7,5 @@ INSERT INTO users (name, phone, mail, donations) VALUES ('Fritz', '987654321', '
 INSERT INTO users (name, phone, mail, donations) VALUES ('Ruben', '123987456', 'ruben_doando@theactualdonator.pt', 0);
 INSERT INTO users (name, phone, mail, donations) VALUES ('Miguel', '321456789', 'miguel@doandozin.pt', 0);
 
-INSERT INTO giftees (name, age, description, institutions_id, users_id, status) VALUES ('Adriana',5,  'Little girl from Porto', 1, 1, 0);
+INSERT INTO giftees (name, age, description, institutions_id, users_id, status) VALUES ('Adriana',5,  'Little girl from Porto', 1, 0, null);
 INSERT INTO giftees (name, age, description, institutions_id, users_id, status) VALUES ('Ricardo',7,  'Little boy from Faro', 1, 1, 0);
