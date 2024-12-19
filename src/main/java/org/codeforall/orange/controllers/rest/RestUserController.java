@@ -6,6 +6,7 @@ import org.codeforall.orange.converters.GifteeToGifteeDto;
 import org.codeforall.orange.converters.UserDtoToUser;
 import org.codeforall.orange.converters.UserToUserDto;
 import org.codeforall.orange.model.User;
+import org.codeforall.orange.services.GifteeService;
 import org.codeforall.orange.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -25,7 +27,7 @@ public class RestUserController {
     private UserToUserDto userToUserDto;
     private UserDtoToUser userDtoToUser;
     private GifteeToGifteeDto gifteeToGifteeDto;
-
+    private GifteeService gifteeService;
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
@@ -44,6 +46,11 @@ public class RestUserController {
     @Autowired
     public void setGifteeToGifteeDto(GifteeToGifteeDto gifteeToGifteeDto) {
         this.gifteeToGifteeDto = gifteeToGifteeDto;
+    }
+
+    @Autowired
+    public void setGifteeService(GifteeService gifteeService) {
+        this.gifteeService = gifteeService;
     }
 
     @RequestMapping(method = RequestMethod.GET, path = {"/{id}"}, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -75,6 +82,11 @@ public class RestUserController {
                 .filter(giftee -> giftee.getStatus() != true)
                 .map(giftee -> gifteeToGifteeDto.convert(giftee))
                 .collect(Collectors.toList());
+
+        /*List<GifteeDto> giftees = gifteeService.list().stream()
+                .filter(giftee -> giftee.getUsers().getId() == id)
+                .map(giftee -> gifteeToGifteeDto.convert(giftee))
+                .collect(Collectors.toList());*/
 
         return new ResponseEntity<>(giftees, HttpStatus.OK);
     }
