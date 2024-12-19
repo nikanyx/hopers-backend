@@ -28,6 +28,8 @@ public class InstitutionDto {
     @Size(min = 3, max = 64)
     private String address;
 
+    private Boolean isAvailable;
+
     //Getters
     public int getId() {
         return id;
@@ -49,6 +51,10 @@ public class InstitutionDto {
         return address;
     }
 
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
     //Setters
     public void setId(int id) {
         this.id = id;
@@ -68,5 +74,9 @@ public class InstitutionDto {
 
     public void setAddress(String adrress) {
         this.address = adrress;
+    }
+
+    public void setAvailable(Boolean available) {
+        isAvailable = available;
     }
 }

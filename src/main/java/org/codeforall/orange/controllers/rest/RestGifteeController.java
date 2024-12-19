@@ -66,14 +66,11 @@ public class RestGifteeController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/available", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<GifteeDto>> listAvailableGiftees() {
-
         List<GifteeDto> giftees = gifteeService.list().stream()
-                .filter(giftee -> giftee.isStatus() == null)
+                .filter(giftee -> giftee.getStatus() == null)
                 .map(giftee -> gifteeToGifteeDto.convert(giftee))
                 .collect(Collectors.toList());
 
         return new ResponseEntity<>(giftees, HttpStatus.OK);
     }
-
-
 }

@@ -72,7 +72,7 @@ public class RestUserController {
     public ResponseEntity<List<GifteeDto>> listGifteesByUserId(@PathVariable Integer id) {
 
         List<GifteeDto> giftees = userService.get(id).getGiftees().stream()
-                .filter(giftee -> giftee.isStatus() != true)
+                .filter(giftee -> giftee.getStatus() != true)
                 .map(giftee -> gifteeToGifteeDto.convert(giftee))
                 .collect(Collectors.toList());
 
