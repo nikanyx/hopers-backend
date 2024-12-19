@@ -51,7 +51,7 @@ public class Giftee {
         return users;
     }
 
-    public Boolean isStatus() {
+    public Boolean getStatus() {
         return status;
     }
 

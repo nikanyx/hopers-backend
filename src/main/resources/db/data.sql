@@ -9,3 +9,4 @@ INSERT INTO users (name, phone, mail, donations) VALUES ('Miguel', '321456789', 
 
 INSERT INTO giftees (name, age, description, institutions_id, users_id, status) VALUES ('Adriana',5,  'Little girl from Porto', 1, 1, 0);
 INSERT INTO giftees (name, age, description, institutions_id, users_id, status) VALUES ('Ricardo',7,  'Little boy from Faro', 1, 1, 0);
+INSERT INTO giftees (name, age, description, institutions_id, users_id, status) VALUES ('KarolG',4,  'Little girl from Avenida da Liberdade', 1, 1, 1);

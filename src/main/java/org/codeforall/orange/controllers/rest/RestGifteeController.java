@@ -5,6 +5,7 @@ import org.codeforall.orange.converters.GifteeDtoToGiftee;
 import org.codeforall.orange.converters.GifteeToGifteeDto;
 import org.codeforall.orange.model.Giftee;
 import org.codeforall.orange.services.GifteeService;
+import org.codeforall.orange.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,12 +21,21 @@ public class RestGifteeController {
     private GifteeService gifteeService;
     private GifteeToGifteeDto gifteeToGifteeDto;
     private GifteeDtoToGiftee gifteeDtoToGiftee;
+    private UserService userService;
 
     @Autowired
     public void setGifteeService(GifteeService gifteeService){
         this.gifteeService = gifteeService;
     }
 
+    @Autowired
+    public void setGifteeToGifteeDto(GifteeToGifteeDto gifteeToGifteeDto) {
+        this.gifteeToGifteeDto = gifteeToGifteeDto;
+    }
+    @Autowired
+    public void setGifteeDtoToGiftee(GifteeDtoToGiftee gifteeDtoToGiftee) {
+        this.gifteeDtoToGiftee = gifteeDtoToGiftee;
+    }
     @RequestMapping(method = RequestMethod.GET, path = {"/", ""}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<GifteeDto>> listGiftees() {
 
@@ -37,10 +47,11 @@ public class RestGifteeController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = {"/{id}"}, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Giftee> getGiftee(@PathVariable Integer id) {
-        return new ResponseEntity<>(gifteeService.get(id), HttpStatus.OK);
+    public ResponseEntity<GifteeDto> getGiftee(@PathVariable Integer id) {
+        Giftee giftee = gifteeService.get(id);
+        GifteeDto gifteeDto = gifteeToGifteeDto.convert(giftee);
+        return new ResponseEntity<>(gifteeDto, HttpStatus.OK);
     }
-
 
     @RequestMapping(method = RequestMethod.POST, path = {"/"}, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Giftee> addGiftee(@RequestBody Giftee giftee) {
@@ -53,17 +64,6 @@ public class RestGifteeController {
         gifteeService.save(giftee);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }*/
-
-    @Autowired
-    public void setGifteeToGifteeDto(GifteeToGifteeDto gifteeToGifteeDto) {
-        this.gifteeToGifteeDto = gifteeToGifteeDto;
-    }
-
-    @Autowired
-    public void setGifteeDtoToGiftee(GifteeDtoToGiftee gifteeDtoToGiftee) {
-        this.gifteeDtoToGiftee = gifteeDtoToGiftee;
-    }
-
 
 
 }
