@@ -1,5 +1,6 @@
 package org.codeforall.orange.command;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -18,9 +19,9 @@ public class UserDto {
     @Size(min = 9, max = 14)
     private String phone;
 
-    @NotNull(message = "Description is mandatory")
-    @NotBlank(message = "Description is mandatory")
-    @Size(min = 3, max = 256)
+    @NotNull(message = "Email address is mandatory")
+    @NotBlank(message = "Email address is mandatory")
+    @Email(message = "Email address is mandatory")
     private String mail;
 
     @NotNull(message = "Mandatory")

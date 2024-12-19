@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/user")
 public class RestUserController {
@@ -51,7 +52,7 @@ public class RestUserController {
         return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = {"/", ""}, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, path = {"/", ""})
     public ResponseEntity<UserDto> addUser(@RequestBody UserDto userDto) {
         User savedUser = userService.save(userDtoToUser.convert(userDto));
         return new ResponseEntity<>(userToUserDto.convert(savedUser),HttpStatus.CREATED);

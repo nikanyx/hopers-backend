@@ -1,8 +1,6 @@
 package org.codeforall.orange.persistence;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import org.codeforall.orange.model.User;
@@ -37,14 +35,18 @@ public class UserDao {
         return em.find(User.class, id);
     }
 
+    /*
+    public User findByEmail(String email) {
+        EntityManager em = sm.getCurrentSession();
+        User user = em.createQuery("SELECT * FROM TABLE users where mail = :value1")
+                .setParameter("value1", email).getSingleResult();
+        return user;
+    }
+     */
+
     public User saveOrUpdate(User modelObject) {
         EntityManager em = sm.getCurrentSession();
         return em.merge(modelObject);
     }
 
-    /*
-    public void delete(Integer id) {
-        em.remove(em.find(User.class, id));
-    }
-    */
 }
