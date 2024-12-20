@@ -4,6 +4,7 @@ import org.codeforall.orange.command.GifteeDto;
 import org.codeforall.orange.converters.GifteeDtoToGiftee;
 import org.codeforall.orange.converters.GifteeToGifteeDto;
 import org.codeforall.orange.model.Giftee;
+import org.codeforall.orange.model.User;
 import org.codeforall.orange.services.GifteeService;
 import org.codeforall.orange.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +62,9 @@ public class RestGifteeController {
         giftee.setUsers(userService.get(uid));
         giftee.setStatus(false);
         Giftee savedGiftee = gifteeService.save(giftee);
+        User user = userService.get(uid);
+        user.getGiftees().add(giftee);
+        userService.save(user);
         return new ResponseEntity<>(gifteeToGifteeDto.convert(savedGiftee), HttpStatus.OK);
     }
 

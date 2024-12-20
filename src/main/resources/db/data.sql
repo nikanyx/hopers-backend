@@ -7,9 +7,9 @@ INSERT INTO users (name, phone, mail, donations) VALUES ('Fritz', '987654321', '
 INSERT INTO users (name, phone, mail, donations) VALUES ('Ruben', '123987456', 'ruben_doando@theactualdonator.pt', 0);
 INSERT INTO users (name, phone, mail, donations) VALUES ('Miguel', '321456789', 'miguel@doandozin.pt', 0);
 
-INSERT INTO giftees (name, age, description, institutions_id, users_id, status) VALUES ('Adriana',5,  'Little girl from Porto', 1, 3, 0);
-INSERT INTO giftees (name, age, description, institutions_id, users_id, status) VALUES ('Ricardo',7,  'Little boy from Faro', 1, 3, 0);
-INSERT INTO giftees (name, age, description, institutions_id, users_id, status) VALUES ('KarolG',4,  'Little girl from Avenida da Liberdade', 1, null, null);
-INSERT INTO giftees (name, age, description, institutions_id, users_id, status) VALUES ('Maria',14,  'Little girl from Cascais', 2, null, null);
-INSERT INTO giftees (name, age, description, institutions_id, users_id, status) VALUES ('Ana',9,  'Little girl from Coimbra', 3, null, null);
-INSERT INTO giftees (name, age, description, institutions_id, users_id, status) VALUES ('João',4,  'Little boy from Beja', 3, null, null);
+INSERT INTO giftees (name, age, description, institutions_id, users_id, status) VALUES ('Adriana',5,  'Barbie doll, winter jacket', 1, 3, 0);
+INSERT INTO giftees (name, age, description, institutions_id, users_id, status) VALUES ('Ricardo',7,  'Lego set, sports shoes size 28', 1, 3, 0);
+INSERT INTO giftees (name, age, description, institutions_id, users_id, status) VALUES ('KarolG', 4,  'Kitchen play set, winter jacket', 1, null, null);
+INSERT INTO giftees (name, age, description, institutions_id, users_id, status) VALUES ('Maria', 14,  'Tablet', 2, null, null);
+INSERT INTO giftees (name, age, description, institutions_id, users_id, status) VALUES ('Ana', 9,  'Barbie doll', 3, null, null);
+INSERT INTO giftees (name, age, description, institutions_id, users_id, status) VALUES ('João',4,  'Lego set, sandals size 20', 3, null, null);
